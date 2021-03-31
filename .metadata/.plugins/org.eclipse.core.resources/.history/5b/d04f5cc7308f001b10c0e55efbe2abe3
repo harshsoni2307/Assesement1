@@ -1,0 +1,13 @@
+package com.harsh.studentappapi;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.harsh.studentappapi.models.Student;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<Student, Integer> {
+    Optional<Student> findById(Long userName);
+
+	Optional<Student> findByUserName(String userName);
+}

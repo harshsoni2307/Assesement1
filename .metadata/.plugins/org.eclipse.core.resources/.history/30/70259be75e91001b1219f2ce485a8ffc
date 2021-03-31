@@ -1,0 +1,13 @@
+package com.harsh.studentapp.users;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class StudentAppUsersApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(StudentAppUsersApplication.class, args);
+	}
+
+}

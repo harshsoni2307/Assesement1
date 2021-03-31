@@ -1,0 +1,5 @@
+package com.harsh.studentapp.users.payload.request;
+
+public class SignupRequest {
+
+}

@@ -1,0 +1,5 @@
+package com.harsh.studentapp.users.repository;
+
+public class RoleRepository {
+
+}
