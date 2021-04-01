@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=/home/harsh/Desktop/Assesment1/spring-security-jwt/.git\:/home/harsh/Desktop/Assesment1/spring-boot-jwt/.git\:
-GitRepositoriesView.GitDirectories.relative=spring-security-jwt/.git\:spring-boot-jwt/.git\:
+GitRepositoriesView.GitDirectories=/home/harsh/Desktop/Assesment1/spring-security-jwt/.git\:/home/harsh/Desktop/Assesment1/.git\:/home/harsh/Desktop/Assesment1/spring-boot-jwt/.git\:
+GitRepositoriesView.GitDirectories.relative=spring-security-jwt/.git\:.git\:spring-boot-jwt/.git\:
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
