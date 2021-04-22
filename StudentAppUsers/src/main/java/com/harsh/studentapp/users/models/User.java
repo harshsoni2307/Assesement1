@@ -1,5 +1,6 @@
 package com.harsh.studentapp.users.models;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = "username"),
 		@UniqueConstraint(columnNames = "email") })
-public class User {
+public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -29,9 +30,16 @@ public class User {
 	@Size(max = 120)
 	private String password;
 
+	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "marks", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "id"))
+	private Set<Subject> subject = new HashSet<>();
+	
+	
 
 	public User() {
 	}
@@ -81,4 +89,12 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+	public Set<Subject> getSubject() {
+		return subject;
+	}
+
+	public void setSubject(Set<Subject> subject) {
+		this.subject = subject;
+	}
+
 }

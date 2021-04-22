@@ -2,6 +2,7 @@ package com.harsh.studentapp.users.repository;
 
 import java.util.Optional;
 
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,3 +16,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	Boolean existsByEmail(String email);
 }
+
+

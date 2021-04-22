@@ -17,6 +17,10 @@ import com.harsh.studentapp.users.exception.ResourceNotFoundException;
 import com.harsh.studentapp.users.models.User;
 import com.harsh.studentapp.users.repository.UserRepository;
 
+import io.searchbox.client.JestClient;
+import io.searchbox.client.JestClientFactory;
+import io.searchbox.client.config.HttpClientConfig;
+
 
 @RestController
 @RequestMapping("/api/auth/users")
@@ -24,7 +28,26 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
-
+    
+	
+	JestClient client = null;
+	public JestClient getClient() {
+		if(this.client==null)
+		{
+			System.out.println("setting up connection with jedis");
+			JestClientFactory factory=new JestClientFactory();
+			factory.setHttpClientConfig(
+					new HttpClientConfig.Builder("https://search-ytsearch-staging-vflomzxcm3c4pklej6nwyomxfm.us-east-1.es.amazonaws.com/")
+					.defaultMaxTotalConnectionPerRoute(2)
+					.maxTotalConnection(10)
+					.build());
+			this.client = factory.getObject();
+			return factory.getObject();
+			
+		}
+		return this.client;
+	}
+	
 	// get all users
 	@GetMapping
 	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")

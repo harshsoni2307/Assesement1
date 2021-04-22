@@ -1,5 +1,0 @@
-package com.harsh.studentapp.users.security.services;
-
-public class UserDetailsImpl {
-
-}

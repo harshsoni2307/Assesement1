@@ -2,6 +2,8 @@ package com.harsh.studentapp.users.payload.response;
 
 import java.util.List;
 
+
+
 public class JwtResponse {
 	private String token;
 	private String type = "Bearer";
@@ -61,4 +63,5 @@ public class JwtResponse {
 	public List<String> getRoles() {
 		return roles;
 	}
+
 }
