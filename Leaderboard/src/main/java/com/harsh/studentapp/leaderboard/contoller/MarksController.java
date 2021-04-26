@@ -26,12 +26,12 @@ public class MarksController {
 	}  
 
 	@GetMapping("/Marks/{marksid}")  
-	private Marks getMarks(@PathVariable("Marksid") int Marksid)   
+	private Marks getMarks(@PathVariable("marksid") int Marksid)   
 	{  
 	return marksService.getMarksById(Marksid);  
 	}  
 	@DeleteMapping("/Marks/{marksid}")  
-	private void deleteBook(@PathVariable("Marksid") int marksid)   
+	private void deleteBook(@PathVariable("marksid") int marksid)   
 	{  
       marksService.delete(marksid);  
 	}  

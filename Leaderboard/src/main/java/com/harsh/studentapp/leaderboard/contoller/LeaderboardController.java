@@ -23,19 +23,18 @@ public class LeaderboardController {
 	
     @Autowired
     LeaderboardService leaderboardService;
-    
-    @GetMapping("/top10")
-    @Scheduled(cron= "0 */1 * * * * *")
+    @GetMapping("/top10") 
+    @Scheduled(fixedDelay = 60000)
     public List<Leaderboard> show()
     {
     	log.info("Cron woring");
     	leaderboardService.delete();
     	leaderboardService.add();
-    	return(leaderboardService.top10());
-    
     	
+    	return(leaderboardService.top10());	
     	
     }
+
     
     
      

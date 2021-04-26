@@ -14,7 +14,7 @@ import com.harsh.studentapp.leaderboard.models.Leaderboard;
 public interface LeaderboardRepository  extends CrudRepository<Leaderboard,String>{
 	
 	@Modifying
-	@Query(value=("INSERT INTO leaderboard (studentname, total) SELECT s.name, SUM(m.marks) FROM marks m INNER JOIN student s ON s.studentid = m.studentid GROUP BY s.studentid;"),nativeQuery=true)
+	@Query(value=("INSERT INTO leaderboard (studentname, total) SELECT concat(s.name,'_',s.studentid), SUM(m.marks) FROM marks m INNER JOIN student s ON s.studentid = m.studentid GROUP BY s.studentid;"),nativeQuery=true)
 	@Transactional
 	void addRecord();
 	
