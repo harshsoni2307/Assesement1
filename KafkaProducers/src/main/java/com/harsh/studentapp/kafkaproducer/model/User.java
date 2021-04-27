@@ -1,4 +1,4 @@
-package com.harsh.studentapp.kafkaprodcer;
+package com.harsh.studentapp.kafkaproducer.model;
 public class User {
 
     private String name;

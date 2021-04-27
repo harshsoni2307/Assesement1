@@ -28,25 +28,6 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
-    
-	
-	JestClient client = null;
-	public JestClient getClient() {
-		if(this.client==null)
-		{
-			System.out.println("setting up connection with jedis");
-			JestClientFactory factory=new JestClientFactory();
-			factory.setHttpClientConfig(
-					new HttpClientConfig.Builder("https://search-ytsearch-staging-vflomzxcm3c4pklej6nwyomxfm.us-east-1.es.amazonaws.com/")
-					.defaultMaxTotalConnectionPerRoute(2)
-					.maxTotalConnection(10)
-					.build());
-			this.client = factory.getObject();
-			return factory.getObject();
-			
-		}
-		return this.client;
-	}
 	
 	// get all users
 	@GetMapping

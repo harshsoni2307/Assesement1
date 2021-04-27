@@ -1,4 +1,4 @@
-package com.harsh.studentapp.kafkaprodcer;
+package com.harsh.studentapp.kafkaproducer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

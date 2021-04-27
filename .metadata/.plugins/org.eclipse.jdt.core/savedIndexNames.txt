@@ -1,7 +1,6 @@
 INDEX VERSION 1.131+/home/harsh/Desktop/Assesment1/.metadata/.plugins/org.eclipse.jdt.core
 2790953112.index
 2312404492.index
-1343394971.index
 283205837.index
 3707711026.index
 1869720734.index
