@@ -21,16 +21,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.harsh.studentapp.users.models.ERole;
-import com.harsh.studentapp.users.models.ESubject;
+
 import com.harsh.studentapp.users.models.Role;
-import com.harsh.studentapp.users.models.Subject;
+
 import com.harsh.studentapp.users.models.User;
 import com.harsh.studentapp.users.payload.request.LoginRequest;
 import com.harsh.studentapp.users.payload.request.SignupRequest;
 import com.harsh.studentapp.users.payload.response.JwtResponse;
 import com.harsh.studentapp.users.payload.response.MessageResponse;
 import com.harsh.studentapp.users.repository.RoleRepository;
-import com.harsh.studentapp.users.repository.SubjectRepository;
+
 import com.harsh.studentapp.users.repository.UserRepository;
 import com.harsh.studentapp.users.security.jwt.JwtUtils;
 import com.harsh.studentapp.users.security.services.UserDetailsImpl;
@@ -47,9 +47,6 @@ public class AuthController {
 
 	@Autowired
 	RoleRepository roleRepository;
-
-	@Autowired
-	SubjectRepository subjectRepository;
 
 	@Autowired
 	PasswordEncoder encoder;
@@ -91,9 +88,6 @@ public class AuthController {
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 
-		Set<String> strSubjects = signUpRequest.getSubject();
-		Set<Subject> subjects = new HashSet<>();
-
 		if (strRoles == null) {
 			Role userRole = roleRepository.findByName(ERole.ROLE_USER)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
@@ -122,37 +116,6 @@ public class AuthController {
 		}
 
 		user.setRoles(roles);
-
-		// Setting Subjects for User
-
-		if (strSubjects == null) {
-			Subject userSubject = subjectRepository.findByName(ESubject.Maths)
-					.orElseThrow(() -> new RuntimeException("Error: Subject is not found."));
-			subjects.add(userSubject);
-		} else {
-			strSubjects.forEach(subject -> {
-				switch (subject) {
-				case "Maths":
-					Subject Maths = subjectRepository.findByName(ESubject.Maths)
-							.orElseThrow(() -> new RuntimeException("Error: Maths subject not found."));
-					subjects.add(Maths);
-
-					break;
-				case "English":
-					Subject English = subjectRepository.findByName(ESubject.English)
-							.orElseThrow(() -> new RuntimeException("Error: English subject not found."));
-					subjects.add(English);
-
-					break;
-				default:
-					Subject Hindi = subjectRepository.findByName(ESubject.Hindi)
-							.orElseThrow(() -> new RuntimeException("Error: Hindi subject not found."));
-					subjects.add(Hindi);
-				}
-			});
-		}
-
-		user.setSubject(subjects);
 
 		userRepository.save(user);
 
